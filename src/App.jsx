@@ -1,6 +1,7 @@
 // import React from "react";
-import {createRoot} from "react-dom";
-import Pet from "./pet"
+import { createRoot } from "react-dom/client";
+//import Pet from "./pet"
+import SearchParams from "./SearchParams";
 // const Pet = (props) => {
 //   return React.createElement("div", {}, [
 //     React.createElement("h1", {}, props.name),
@@ -28,16 +29,17 @@ const App = () => {
   //     bread: "Cocktail",
   //   }),
   // ]);
- 
-    <div>
-      <h1>Adopt Me!</h1>
-      <Pet name="Buddy" animal="Cat" bread="Bread"/>
+return(
+  <div>
+    <h1>Adopt Me!</h1>
+    {/* <Pet name="Buddy" animal="Cat" bread="Bread"/>
       <Pet name="Luna" animal="Dog" bread="Havanese"/>
-      <Pet name="Papers" animal="Bird" bread="Cocktail"/>
-    </div>
-  
+      <Pet name="Papers" animal="Bird" bread="Cocktail"/> */}
+    <SearchParams />
+  </div>
+)
 };
 
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<App/>);
+root.render(<App />);
