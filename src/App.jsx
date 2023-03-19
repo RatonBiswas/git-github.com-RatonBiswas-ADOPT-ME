@@ -6,7 +6,7 @@ import SearchParams from "./SearchParams";
 //   return React.createElement("div", {}, [
 //     React.createElement("h1", {}, props.name),
 //     React.createElement("h2", {}, props.animal),
-//     React.createElement("h2", {}, props.bread),
+//     React.createElement("h2", {}, props.breed),
 //   ]);
 // };
 
@@ -16,25 +16,25 @@ const App = () => {
   //   React.createElement(Pet, {
   //     name: "Buddy",
   //     animal: "Cat",
-  //     bread: "Bread",
+  //     breed: "Breed",
   //   }),
   //   React.createElement(Pet, {
   //     name: "Luna",
   //     animal: "Dog",
-  //     bread: "Havanese",
+  //     breed: "Havanese",
   //   }),
   //   React.createElement(Pet, {
   //     name: "Papers",
   //     animal: "Bird",
-  //     bread: "Cocktail",
+  //     breed: "Cocktail",
   //   }),
   // ]);
 return(
   <div>
     <h1>Adopt Me!</h1>
-    {/* <Pet name="Buddy" animal="Cat" bread="Bread"/>
-      <Pet name="Luna" animal="Dog" bread="Havanese"/>
-      <Pet name="Papers" animal="Bird" bread="Cocktail"/> */}
+    {/* <Pet name="Buddy" animal="Cat" breed="Breed"/>
+      <Pet name="Luna" animal="Dog" breed="Havanese"/>
+      <Pet name="Papers" animal="Bird" breed="Cocktail"/> */}
     <SearchParams />
   </div>
 )

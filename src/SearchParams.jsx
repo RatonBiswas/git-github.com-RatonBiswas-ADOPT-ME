@@ -1,15 +1,34 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import Pet from "./Pet";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
-  const [bread, setBread] = useState("");
-  const breads = [];
+  const [breed, setBreed] = useState("");
+  const [pets, setPets] = useState([]);
+  const breeds = [];
+
+  useEffect(()=>{
+    requestPets();
+  
+  },[])// eslint-disable-line react-hooks/exhaustive-deps
+  
+  async function requestPets(){
+    const res = await fetch(
+        `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+      );
+      const json = await res.json();
+    
+      setPets(json.pets);
+    }
+
   return (
     <div className="search-params">
-      <form action="">
+      <form onSubmit={(e)=>{
+        e.preventDefault();
+        requestPets();
+      }}>
         <level htmlFor="location">
           Location
           <input
@@ -29,18 +48,24 @@ const SearchParams = () => {
                 ))}
             </select>
         </level>
-        <level htmlFor="bread">
-            Bread
-            <select id="bread" disabled={breads.length===0} value={bread} onChange={(e) => {setBread(e.target.value)}}>
-                {breads.map((bread) => (
-                  <option key={bread} value={bread}>
-                    {bread}
+        <level htmlFor="breed">
+            Breed
+            <select id="breed" disabled={breeds.length===0} value={breed} onChange={(e) => {setBreed(e.target.value)}}>
+                {breeds.map((breed) => (
+                  <option key={breed} value={breed}>
+                    {breed}
                   </option>
                 ))}
             </select>
         </level>
         <button type="submit">Submit</button>
       </form>
+      {
+        pets.map((pet) => (
+            <Pet key={pet.id} name={pet.name} location={pet.location} breed={pet.breed} />
+          )
+        )
+      }
     </div>
   );
 };
