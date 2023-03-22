@@ -1,17 +1,8 @@
-// import React from "react";
 import { createRoot } from "react-dom/client";
-//import Pet from "./pet"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
-// const Pet = (props) => {
-//   return React.createElement("div", {}, [
-//     React.createElement("h1", {}, props.name),
-//     React.createElement("h2", {}, props.animal),
-//     React.createElement("h2", {}, props.breed),
-//   ]);
-// };
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,35 +14,10 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  // return React.createElement("div", {}, [
-  //   React.createElement("h1", {}, "Adopt Me!"),
-  //   React.createElement(Pet, {
-  //     name: "Buddy",
-  //     animal: "Cat",
-  //     breed: "Breed",
-  //   }),
-  //   React.createElement(Pet, {
-  //     name: "Luna",
-  //     animal: "Dog",
-  //     breed: "Havanese",
-  //   }),
-  //   React.createElement(Pet, {
-  //     name: "Papers",
-  //     animal: "Bird",
-  //     breed: "Cocktail",
-  //   }),
-  // ]);
   return (
-    // <div>
-    //   <h1>Adopt Me!</h1>
-    //   {/* <Pet name="Buddy" animal="Cat" breed="Breed"/>
-    //     <Pet name="Luna" animal="Dog" breed="Havanese"/>
-    //     <Pet name="Papers" animal="Bird" breed="Cocktail"/> */}
-    //   <SearchParams />
-    // </div>
     <div>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
           <header>
             <Link to="/">Adopt Me!</Link>
           </header>
@@ -59,8 +25,8 @@ const App = () => {
             <Route path="/details/:id" element={<Details />} />
             <Route path="/" element={<SearchParams />} />
           </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </BrowserRouter>
     </div>
   );
 };
